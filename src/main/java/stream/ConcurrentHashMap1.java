@@ -256,8 +256,8 @@ public class ConcurrentHashMap1<K,V> extends AbstractMap<K,V>
      * initial insertion rates on an empty table by many threads.
      *                                                                                              这个映射通常充当一个装箱（散列）哈希表。每个
      * This map usually acts as a binned (bucketed) hash table.  Each                                键值映射保存在节点中。大多数节点都是实例
-     * key-value mapping is held in a Node.  Most nodes are instances                                  具有哈希、键、值和next的基本节点类
-     * of the basic Node class with hash, key, value, and next                                     领域。然而，存在各种亚类：树烯类
+     * key-value mapping is held in a TreeNode.  Most nodes are instances                                  具有哈希、键、值和next的基本节点类
+     * of the basic TreeNode class with hash, key, value, and next                                     领域。然而，存在各种亚类：树烯类
      * fields. However, various subclasses exist: TreeNodes are                                     排列成平衡的树，而不是列表。Treebins有根
      * arranged in balanced trees, not lists.  TreeBins hold the roots                                          一组树的。前移节点放置在头部
      * of sets of TreeNodes. ForwardingNodes are placed at the heads                                            调整大小期间的容器数。Reservation节点用作
@@ -273,13 +273,13 @@ public class ConcurrentHashMap1<K,V> extends AbstractMap<K,V>
      *
      * The table is lazily initialized to a power-of-two size upon the
      * first insertion.  Each bin in the table normally contains a
-     * list of Nodes (most often, the list has only zero or one Node).
+     * list of Nodes (most often, the list has only zero or one TreeNode).
      * Table accesses require volatile/atomic reads, writes, and
      * CASes.  Because there is no other way to arrange this without
      * adding further indirections, we use intrinsics
      * (sun.misc.Unsafe) operations.
      *
-     * We use the top (sign) bit of Node hash fields for control
+     * We use the top (sign) bit of TreeNode hash fields for control
      * purposes -- it is available anyway because of addressing
      * constraints.  Nodes with negative hash fields are specially
      * handled or ignored in map methods.
@@ -566,7 +566,7 @@ public class ConcurrentHashMap1<K,V> extends AbstractMap<K,V>
     private static final int RESIZE_STAMP_SHIFT = 32 - RESIZE_STAMP_BITS;
 
     /*
-     * Encodings for Node hash fields. See above for explanation.
+     * Encodings for TreeNode hash fields. See above for explanation.
      */
     static final int MOVED     = -1; // hash for forwarding nodes
     static final int TREEBIN   = -2; // hash for roots of trees
@@ -589,7 +589,7 @@ public class ConcurrentHashMap1<K,V> extends AbstractMap<K,V>
      * Key-value entry.  This class is never exported out as a
      * user-mutable Map.Entry (i.e., one supporting setValue; see
      * MapEntry below), but can be used for read-only traversals used
-     * in bulk tasks.  Subclasses of Node with a negative hash field
+     * in bulk tasks.  Subclasses of TreeNode with a negative hash field
      * are special, and contain null keys and values (but are never
      * exported).  Otherwise, keys and vals are never null.
      */

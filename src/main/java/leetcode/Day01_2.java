@@ -53,7 +53,6 @@ public class Day01_2 {
             return  url.get(decodeUrl);
         }
         return "www.baidu.com";
-
     }
 
 }

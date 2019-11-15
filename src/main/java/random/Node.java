@@ -18,7 +18,7 @@ public class Node implements Comparable {
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "TreeNode{" +
                 "percent=" + percent +
                 ", value='" + value + '\'' +
                 '}';

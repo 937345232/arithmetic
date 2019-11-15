@@ -31,7 +31,7 @@ public class Test111 {
     public static void main(String[] args) {
         ArrayList<Node> data = new ArrayList();
         initData(data);
-//        data.add(new Node(url5, "6666666666666666666666"));
+//        data.add(new TreeNode(url5, "6666666666666666666666"));
         //统计100中各个百分比出现次数
         HashMap<Node, Integer> result = new HashMap();
         for (long i = 1; i <= 1000000000L; i++) {
