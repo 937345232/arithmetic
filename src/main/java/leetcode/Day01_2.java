@@ -18,7 +18,7 @@ public class Day01_2 {
     static String sign = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
-    public static ConcurrentHashMap<String, String> url = new ConcurrentHashMap<>();
+    public static ConcurrentHashMap<String, String> url = new ConcurrentHashMap();
 
     public static void main(String[] args) {
         String encode = encode("https://blog.csdn.net/jzx937345232");
