@@ -19,7 +19,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
                             Object msg) {
         ByteBuf in = (ByteBuf) msg;
         System.out.println("服务端: " + in.toString(CharsetUtil.UTF_8));
-        ctx.write("xxxxx");
+        ctx.writeAndFlush("xxxxx");
     }
 
     @Override

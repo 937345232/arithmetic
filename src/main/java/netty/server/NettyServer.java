@@ -4,6 +4,7 @@ import com.sun.corba.se.internal.CosNaming.BootstrapServer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -12,6 +13,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.nio.ByteBuffer;
 
 /**
  * @author jzx
@@ -32,18 +34,39 @@ public class NettyServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(group)
                     .channel(NioServerSocketChannel.class)
-                    .localAddress(new InetSocketAddress(port))
+                    .localAddress(new InetSocketAddress("127.0.0.1", port))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new EchoServerHandler());
+                        protected void initChannel(SocketChannel sh) throws Exception {
+                            sh.pipeline().addLast(new EchoServerHandler());
+
                         }
                     });
-            ChannelFuture sync = serverBootstrap.bind().sync();
-            sync.channel().closeFuture().sync();
+            ChannelFuture channel = serverBootstrap.option(ChannelOption.SO_KEEPALIVE, true).
+                    option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2000).bind().sync();
+            channel.channel().closeFuture().sync();
         }finally {
             group.shutdownGracefully().sync();
         }
+
+
+//        NioEventLoopGroup group = new NioEventLoopGroup();
+//        try {
+//            ServerBootstrap serverBootstrap = new ServerBootstrap();
+//            serverBootstrap.group(group)
+//                    .channel(NioServerSocketChannel.class)
+//                    .localAddress(new InetSocketAddress(port))
+//                    .childHandler(new ChannelInitializer<SocketChannel>() {
+//                        @Override
+//                        protected void initChannel(SocketChannel ch) throws Exception {
+//                            ch.pipeline().addLast(new EchoServerHandler());
+//                        }
+//                    });
+//            ChannelFuture sync = serverBootstrap.bind().sync();
+//            sync.channel().closeFuture().sync();
+//        }finally {
+//            group.shutdownGracefully().sync();
+//        }
         //创建 EventLoopGroup
 //        NioEventLoopGroup group = new NioEventLoopGroup();
 //        ServerBootstrap serverBootstrap = new ServerBootstrap();
