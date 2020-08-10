@@ -1,0 +1,57 @@
+<domain name="1">
+    <servers/>
+    <adminservers class="java.util.Arrays$ArrayList">
+        <a class="adminserver-array">
+            <adminserver/>
+            <adminserver/>
+        </a>
+    </adminservers>
+    <groupSet class="java.util.Arrays$ArrayList">
+        <a class="groups-array">
+            <groups id="1121111111111312" name="12321312">
+                <group class="java.util.Arrays$ArrayList">
+                    <a class="xml.Group-array">
+                        <xml.Group id="1" name="2">
+                            <servers class="java.util.Arrays$ArrayList">
+                                <a class="server-array">
+                                    <server id="123123" ip="dasdasd"/>
+                                    <server id="123123" ip="dasdasd"/>
+                                </a>
+                            </servers>
+                        </xml.Group>
+                        <xml.Group id="12312" name="121222">
+                            <servers class="java.util.Arrays$ArrayList">
+                                <a class="server-array">
+                                    <server id="123123" ip="dasdasd"/>
+                                    <server id="123123" ip="dasdasd"/>
+                                </a>
+                            </servers>
+                        </xml.Group>
+                    </a>
+                </group>
+            </groups>
+            <groups id="222222" name="12321312">
+                <group class="java.util.Arrays$ArrayList">
+                    <a class="xml.Group-array">
+                        <xml.Group id="1" name="2">
+                            <servers class="java.util.Arrays$ArrayList">
+                                <a class="server-array">
+                                    <server id="123123" ip="dasdasd"/>
+                                    <server id="123123" ip="dasdasd"/>
+                                </a>
+                            </servers>
+                        </xml.Group>
+                        <xml.Group id="12312" name="121222">
+                            <servers class="java.util.Arrays$ArrayList">
+                                <a class="server-array">
+                                    <server id="123123" ip="dasdasd"/>
+                                    <server id="123123" ip="dasdasd"/>
+                                </a>
+                            </servers>
+                        </xml.Group>
+                    </a>
+                </group>
+            </groups>
+        </a>
+    </groupSet>
+</domain>

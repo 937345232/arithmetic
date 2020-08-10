@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<domain name="asdasd" timestamp="366">
+    <servers/>
+    <adminservers>
+        <adminserver ip="123131231" appname="dasdasdas"/>
+        <adminserver ip="123213123" appname="dasdasdas"/>
+    </adminservers>
+    <groupSet>
+        <groups id="100" name="asdas">
+            <group id="101" name="asdasdxxxx">
+                <servers>
+                    <server id="1001" ip="100000001"/>
+                    <server id="1002" ip="100000002"/>
+                </servers>
+
+            </group>
+            <group id="102" name="asdasdxxxx">
+                <servers>
+                    <server id="1001" ip="100000001"/>
+                    <server id="1002" ip="100000002"/>
+                </servers>
+            </group>
+        </groups>
+        <groups id="200" name="asdas">
+            <group id="201" name="asdasdxxxx">
+                <servers>
+                    <server id="2001" ip="2000001"/>
+                    <server id="2002" ip="2000002"/>
+                </servers>
+            </group>
+            <group id="102" name="asdasdxxxx">
+                <servers>
+                    <server id="1001" ip="100000001"/>
+                    <server id="1002" ip="100000002"/>
+                </servers>
+            </group>
+        </groups>
+    </groupSet>
+</domain>

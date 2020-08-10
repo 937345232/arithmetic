@@ -22,6 +22,8 @@ public class BitSetDemo {
        System. out.println(set.length());
        System. out.println(set.toString()); // 返回值为true 的位置号
        System. out.println(set.nextClearBit(3));// 从指定位置第一个为真的序号
+        boolean b = set.get(3);
+        System.out.println("b = " + b);
     }
 
 
